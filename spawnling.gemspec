@@ -32,7 +32,7 @@ threads (see lib/patches.rb).}
   s.add_development_dependency 'simplecov'
   s.add_development_dependency 'simplecov-rcov'
   s.add_development_dependency 'coveralls'
-  s.add_development_dependency 'rails'
+  s.add_development_dependency 'rails', '~> 3.2'
   s.add_development_dependency 'activerecord-nulldb-adapter'
   s.add_development_dependency 'dalli'
 end

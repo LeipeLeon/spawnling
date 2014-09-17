@@ -135,7 +135,11 @@ if need_passenger_patch
 end
 
 if defined?(Rails)
-  if defined?(::ActiveSupport::Cache::MemCacheStore) && Rails.cache.class.name == 'ActiveSupport::Cache::MemCacheStore'
-    ::ActiveSupport::Cache::MemCacheStore.delegate :reset, :to => :@data
+  begin
+    if defined?(::ActiveSupport::Cache::MemCacheStore) && Rails.cache.class.name == 'ActiveSupport::Cache::MemCacheStore'
+      ::ActiveSupport::Cache::MemCacheStore.delegate :reset, :to => :@data
+    end
+  rescue NameError => e
+    raise unless e.message =~ /uninitialized constant RAILS_CACHE/
   end
 end
